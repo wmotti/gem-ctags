@@ -33,7 +33,7 @@ class Gem::Commands::CtagsCommand < Gem::Command
       system(
         'ctags', '-R', '--languages=ruby', '--fields=+l', '-f', tag_file, '--tag-relative=yes',
         *paths
-      )
+      ) unless paths.empty?
     end
 
     target = File.expand_path('lib/bundler/cli.rb', spec.full_gem_path)
